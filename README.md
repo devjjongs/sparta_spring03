@@ -33,3 +33,14 @@
     - 메모 | 조회하기 | GET | api/memos List<Memo>
     - 메모 | 변경하기 | PUT | /api/memos/{id} Long
     - 메모 | 삭제하기 | DELETE | /api/memos/{id} Long
+
+# [!반드시 주의 및 기억!]
+1. Timestamped 사용시 작성 필요
+   - @Getter
+   - @MappedSuperclass // Entity가 자동으로 컬럼으로 인식합니다.
+   - @EntityListeners(AuditingEntityListener.class) // 생성/변경 시간을 자동으로 업데이트합니다.
+
+
+2. JPA를 사용하기 때문에
+   - @EnableJpaAuditing
+   - @SpringBootApplication
