@@ -9,8 +9,10 @@ import javax.persistence.*;
 @Getter
 @Entity // 테이블과 연계됨을 스프링에게 알려줍니다.
 public class Memo extends Timestamped { // 생성,수정 시간을 자동으로 만들어줍니다.
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private Long id;
 
     @Column(nullable = false)
