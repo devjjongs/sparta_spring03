@@ -8,6 +8,9 @@ import com.sparta.week03.service.MemoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -28,7 +31,9 @@ public class MemoController {
     // 조회
     @GetMapping("/api/memos")
     public List<Memo> readMemo() {
-        return memoRepository.findAllByOrderByModifiedAtDesc();
+        LocalDateTime startTime = LocalDateTime.now().minusDays(1);
+        LocalDateTime endTime = LocalDateTime.now();
+        return memoRepository.findAllByModifiedAtBetweenOrderByModifiedAtDesc(startTime, endTime);
     }
 
     // 수정
